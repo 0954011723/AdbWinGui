@@ -6,7 +6,6 @@ platform:
 
 image:
 - Visual Studio 2017
-- Visual Studio 2015
 - Visual Studio 2013
 
 environment:         
@@ -23,5 +22,7 @@ build_script:
     }
    
     & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
+    
+   echo "$env:APPVEYOR_BUILD_WORKER_IMAGE"
     
     
