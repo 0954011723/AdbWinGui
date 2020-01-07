@@ -16,7 +16,7 @@ build_script:
       If ( $env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2015") { $PlatformToolset = "v140" } 
       If ( $env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2017") { $PlatformToolset = "v141" } 
 ###     
-- cmd: echo %APPVEYOR_BUILD_WORKER_IMAGE%
+- cmd: echo %APPVEYOR_BUILD_WORKER_IMAGE% %PlatformToolset%
 
     
     
