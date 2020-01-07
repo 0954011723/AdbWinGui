@@ -19,10 +19,9 @@ build_script:
       $PlatformToolset = "v140"
     } else {
       $PlatformToolset = "v141"
-    }
-   
+    }  
    
     
-   - echo $env:APPVEYOR_BUILD_WORKER_IMAGE
+   - echo APPVEYOR_BUILD_WORKER_IMAGE
     
     
