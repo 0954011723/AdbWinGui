@@ -21,4 +21,5 @@ build_script:
     } else {
       $PlatformToolset = "v141"
     }
+    - echo %APPVEYOR_BUILD_WORKER_IMAGE%
     & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
