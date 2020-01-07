@@ -10,3 +10,11 @@ image:
 environment:
   PRJ_NAME: AdbWinGui 
   
+##### 
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: the-token-is-hidden-on-purpose
+  force_update: true
+  on:
+    APPVEYOR_REPO_TAG: true
