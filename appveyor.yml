@@ -6,9 +6,7 @@ platform:
 
 image:
 - Visual Studio 2017
-- Visual Studio 2013
 
-environment:         
-  PRJ_NAME: AdbWinGui
-  
+environment:
+  PRJ_NAME: AdbWinGui 
   
