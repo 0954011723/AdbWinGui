@@ -2,7 +2,6 @@ configuration:
 - Release
 
 platform:
-- x86
 - x64
 
 image:
@@ -20,9 +19,4 @@ build_script:
     } else {
       $PlatformToolset = "v141"
     }
-
-
-
-    & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
-
     & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
