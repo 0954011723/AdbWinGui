@@ -21,9 +21,7 @@ build_script:
       $PlatformToolset = "v141"
     }
 
-    (Get-Content $PRJ_NAME.vcxproj) | %{$_ -replace "v100", $PlatformToolset} | Set-Content $PRJ_NAME.vcxproj
 
-    (Get-Content $PRJ_NAME.vcxproj) | %{$_ -replace "v100", $PlatformToolset} | Set-Content $PRJ_NAME.vcxproj
 
     & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
 
