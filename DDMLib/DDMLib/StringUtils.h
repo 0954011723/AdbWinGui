@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "CommonDefine.h"
 #include <locale>
-#include <xfunctional>
+// #include <xfunctional>
 #include <algorithm>
 
 class StringUtils
