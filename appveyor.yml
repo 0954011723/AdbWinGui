@@ -12,9 +12,11 @@ environment:
   PRJ_NAME: AdbWinGui
 
 build_script:
-- ps: if ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2013") { $PlatformToolset = "v120" \
-} elseif ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2015") { $PlatformToolset = "v140" \
-} else { $PlatformToolset = "v141" } \
+- ps: If ($env:BUILD_ENVIRONMENT -eq "msbuild" -or ($env:BUILD_ENVIRONMENT -eq "python" -and $isWindows)) {
+    .\synclibs.ps1;
+    .\autogen.ps1 }
+
+
 
 - cmd: echo %APPVEYOR_BUILD_WORKER_IMAGE%
 
