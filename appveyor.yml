@@ -12,8 +12,7 @@ environment:
   PRJ_NAME: AdbWinGui
 
 build_script:
-- ps: >-
-    if ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2013") {
+    - if ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2013") {
       $PlatformToolset = "v120"
     } elseif ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2015") {
       $PlatformToolset = "v140"
