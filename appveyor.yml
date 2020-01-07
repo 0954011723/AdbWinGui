@@ -23,6 +23,6 @@ build_script:
    
     & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
     
-   echo "$env:APPVEYOR_BUILD_WORKER_IMAGE"
+   - echo "$env:APPVEYOR_BUILD_WORKER_IMAGE"
     
     
