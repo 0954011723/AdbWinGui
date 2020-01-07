@@ -1,32 +1,21 @@
-configuration:
-- Release
+version: '1.0.{build}'
+
+image: Visual Studio 2017
 
 platform:
-- x64
+  - x64
+ 
+configuration:
+  - Release
 
-image:
-- Visual Studio 2017
-
-environment:
-  PRJ_NAME: AdbWinGui 
-  
 install:
-### Visual Studio 2017
-### x32
-### call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-### x64
-- call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-### Visual Studio 2015
-### x32
-### call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
-### x64
-### call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
-### call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
-##### 
-deploy:
-- provider: GitHub
-  auth_token:
-    secure: the-token-is-hidden-on-purpose
-  force_update: true
-  on:
-    APPVEYOR_REPO_TAG: true
+    - git submodule update --init --recursive
+
+before_build:
+    - cmake -G "Visual Studio 15 2017 Win64" .
+
+build:
+  project: $(APPVEYOR_BUILD_FOLDER)\$(APPVEYOR_PROJECT_NAME).sln
+
+test_script:
+  - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\tests.exe'
