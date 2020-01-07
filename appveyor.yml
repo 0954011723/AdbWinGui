@@ -1,0 +1,34 @@
+configuration:
+- Debug
+- Release
+
+platform:
+- x86
+- x64
+
+image:
+- Visual Studio 2017
+- Visual Studio 2015
+- Visual Studio 2013
+
+environment:         
+  PRJ_NAME: AdbWinGui
+
+
+build_script:
+- ps: >-
+    if ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2013") {
+      $PlatformToolset = "v120"
+    } elseif ($env:APPVEYOR_BUILD_WORKER_IMAGE -eq "Visual Studio 2015") {
+      $PlatformToolset = "v140"
+    } else {
+      $PlatformToolset = "v141"
+    }
+
+    (Get-Content $PRJ_NAME.vcxproj) | %{$_ -replace "v100", $PlatformToolset} | Set-Content $PRJ_NAME.vcxproj
+
+    (Get-Content $PRJ_NAME.vcxproj) | %{$_ -replace "v100", $PlatformToolset} | Set-Content $PRJ_NAME.vcxproj
+
+    & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
+
+    & msbuild $PRJ_NAME.vcxproj "/p:platform=$env:platform;configuration=$env:configuration"
